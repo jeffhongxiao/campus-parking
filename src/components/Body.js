@@ -6,11 +6,11 @@ const Body = () => (
   <div>
     <Jumbotron>
       <h2>Existing User</h2>
-      <Button className='loginButton' block>LOGIN</Button>
+      <Button href='#/login' bsStyle="info" bsSize="large" block>Login</Button>
     </Jumbotron>
     <Jumbotron>
       <h2>New User</h2>
-      <Button bsStyle="primary" bsSize="large" block>Register</Button>
+      <Button href='#/register' bsStyle="primary" bsSize="large" block>Register</Button>
     </Jumbotron>
   </div>
 )
