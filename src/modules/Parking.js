@@ -2,11 +2,15 @@ import React from 'react'
 
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
+const submitForm = () => {
+  console.log('got here :)')
+}
+
 const Parking = () => (
   <div>
     <div><h1>Parking page</h1></div>
 
-    <form>
+    <form onSubmit={submitForm}>
       <FormGroup controlId="formControlsSelect">
         <ControlLabel>Location</ControlLabel>
         <FormControl componentClass="select" placeholder="select">
