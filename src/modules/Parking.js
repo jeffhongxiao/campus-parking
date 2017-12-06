@@ -2,11 +2,15 @@ import React from 'react'
 
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
 
-
+import axios from 'axios'
 
 class Parking extends React.Component {
   submitForm() {
-    console.log('got here :)')
+    console.log('sending request ...')
+    axios.get('http://localhost:4000/')
+      .then(function (response) {
+        console.log(response);
+      })
   }
 
   render() {
