@@ -11,6 +11,18 @@ class Parking extends React.Component {
       .then(function (response) {
         console.log(response);
       })
+
+    const payload = {
+      key: 'value'
+    }
+    
+    axios.post('http://localhost:4000', payload)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   render() {
