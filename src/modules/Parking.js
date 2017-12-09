@@ -8,21 +8,29 @@ class Parking extends React.Component {
   constructor(props) {
     super(props)
     this.submitForm = this.submitForm.bind(this)
+    this.notSelected = this.notSelected.bind(this)
+  }
+
+  notSelected() {
+    return this.location.value === 'notSelected' ||
+      this.spaces.value === 'notSelected'
   }
 
   submitForm(event) {
+    const location = this.location.value
+    const spaces = this.spaces.value
+
+    if (this.notSelected()) {
+      // TODO show warning message
+      console.log(`values are not selected: ${location}, ${spaces}`)
+      return
+    }
+
     event.preventDefault()
 
-    console.log('location = ' + this.location.value)
-    console.log('spaces = ' + this.spaces.value)
-
-    axios.get('http://localhost:4000/')
-      .then(function (response) {
-        console.log(response);
-      })
-
     const payload = {
-      key: 'value'
+      location,
+      spaces
     }
 
     axios.post('http://localhost:4000', payload)
