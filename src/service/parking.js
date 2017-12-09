@@ -14,8 +14,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body.key)
+  console.log(req.body)
   res.send('response from POST')
+})
+
+app.get('/service/location', (req, res) => {
+  const locations = ['location1', 'location2', 'location3']
+  res.json(locations)
 })
 
 app.listen(4000, () => {

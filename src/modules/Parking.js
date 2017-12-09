@@ -11,6 +11,15 @@ class Parking extends React.Component {
     this.notSelected = this.notSelected.bind(this)
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:4000/service/location')
+    .then((response) => {
+      //this.locations = response.data
+      console.log(response.data)
+    })
+    .catch((error) => {console.log(error)})
+  }
+
   notSelected() {
     return this.location.value === 'notSelected' ||
       this.spaces.value === 'notSelected'
