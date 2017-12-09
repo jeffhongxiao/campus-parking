@@ -19,7 +19,12 @@ app.post('/', (req, res) => {
 })
 
 app.get('/service/location', (req, res) => {
-  const locations = ['location1', 'location2', 'location3']
+  const locations = [
+    {value: 'location1', label: 'Location 1'},
+    {value: 'location2', label: 'Location 2'},
+    {value: 'location3', label: 'Location 3'}
+  ]
+
   res.json(locations)
 })
 
