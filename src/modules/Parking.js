@@ -17,34 +17,23 @@ class Parking extends React.Component {
     this.onChange = this.onChange.bind(this)
   }
 
-  componentWillMount() {
-    axios.get('http://localhost:4000/service/location')
-    .then((response) => {
-      this.locations = response.data
-      console.log(response.data)
-    })
-    .catch((error) => {console.log(error)})
-  }
-
   onChange(value) {
-    debugger
     this.setState({
       value: value
     })
   }
 
   getLocations(input) {
-    if (!input) {
-      return Promise.resolve({ options: [] })
-    }
+    // if (!input) {
+    //   return Promise.resolve({ options: [] })
+    // }
 
-    const promise = axios.get('http://localhost:4000/service/location')
-      .then((response) => response.json())
-      .then((json) => {
-        return { options: json.items}
-      })
+    return fetch('http://localhost:4000/service/location')
+		.then((response) => response.json())
+		.then((json) => {
+			return { options: json };
+		});
 
-    return promise
   }
 
   notSelected() {
@@ -79,17 +68,9 @@ class Parking extends React.Component {
   }
 
   render() {
-    const locations = this.locations
-    console.log(locations)
     return (
       <div>
         <div><h1>Parking page</h1></div>
-
-        <Select id="location-select"
-          ref="locationSelect"
-          options={locations}
-          searchable={true}
-        />
 
         <Select.Async
           multi={false}
@@ -99,7 +80,6 @@ class Parking extends React.Component {
           labelKey="label"
           loadOptions={this.getLocations}
         />
-
 
         <form onSubmit={this.submitForm}>
           <FormGroup controlId="formControlsSelect">
