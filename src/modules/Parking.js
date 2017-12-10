@@ -19,7 +19,7 @@ class Parking extends React.Component {
 
   onChange(value) {
     this.setState({
-      value: value
+      location: value
     })
   }
 
@@ -74,7 +74,7 @@ class Parking extends React.Component {
 
         <Select.Async
           multi={false}
-          value={this.state.value}
+          value={this.state.location}
           onChange={this.onChange}
           valueKey="value"
           labelKey="label"
