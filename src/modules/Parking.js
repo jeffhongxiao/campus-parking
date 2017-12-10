@@ -24,10 +24,6 @@ class Parking extends React.Component {
   }
 
   getLocations(input) {
-    // if (!input) {
-    //   return Promise.resolve({ options: [] })
-    // }
-
     return fetch('http://localhost:4000/service/location')
 		.then((response) => response.json())
 		.then((json) => {
@@ -37,21 +33,21 @@ class Parking extends React.Component {
   }
 
   notSelected() {
-    return this.location.value === 'notSelected' ||
+    return this.state.location === undefined ||
       this.spaces.value === 'notSelected'
   }
 
   submitForm(event) {
-    const location = this.location.value
-    const spaces = this.spaces.value
+    event.preventDefault()
 
     if (this.notSelected()) {
       // TODO show warning message
-      console.log(`values are not selected: ${location}, ${spaces}`)
+      console.log(`values are not selected.`)
       return
     }
 
-    event.preventDefault()
+    const location = this.state.location.value
+    const spaces = this.spaces.value
 
     const payload = {
       location,
@@ -60,6 +56,7 @@ class Parking extends React.Component {
 
     axios.post('http://localhost:4000', payload)
     .then(function (response) {
+      // TODO show success message
       console.log(response);
     })
     .catch(function (error) {
@@ -72,6 +69,7 @@ class Parking extends React.Component {
       <div>
         <div><h1>Parking page</h1></div>
 
+        <ControlLabel>Location</ControlLabel>
         <Select.Async
           multi={false}
           value={this.state.location}
@@ -82,16 +80,6 @@ class Parking extends React.Component {
         />
 
         <form onSubmit={this.submitForm}>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Location</ControlLabel>
-            <FormControl componentClass="select" placeholder="select"
-              inputRef={(ref) => this.location = ref}>
-              <option value="notSelected">---</option>
-              <option value="location1">location 1</option>
-              <option value="location2">location 2</option>
-            </FormControl>
-          </FormGroup>
-
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Remaing spaces</ControlLabel>
             <FormControl componentClass="select" placeholder="select"
