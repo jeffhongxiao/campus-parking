@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap'
+import { Button, ListGroup, ListGroupItem } from 'react-bootstrap'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
@@ -12,31 +12,9 @@ class RequestParking extends React.Component {
     this.state = {}
 
     this.submitForm = this.submitForm.bind(this)
-    this.notSelected = this.notSelected.bind(this)
-    this.getLocations = this.getLocations.bind(this)
-    this.onChange = this.onChange.bind(this)
     this.getParkingSpot = this.getParkingSpot.bind(this)
   }
 
-  onChange(value) {
-    this.setState({
-      location: value
-    })
-  }
-
-  getLocations(input) {
-    return fetch('http://localhost:4000/service/location')
-		.then((response) => response.json())
-		.then((json) => {
-			return { options: json };
-		});
-
-  }
-
-  notSelected() {
-    return this.state.location === undefined ||
-      this.spaces.value === 'notSelected'
-  }
 
   submitForm(event) {
     event.preventDefault()
@@ -61,6 +39,12 @@ class RequestParking extends React.Component {
             Request a Parking spot
           </Button>
         </form>
+
+        <ListGroup>
+          <ListGroupItem>Parking lot 1</ListGroupItem>
+          <ListGroupItem>Parking lot 2</ListGroupItem>
+          <ListGroupItem>...</ListGroupItem>
+        </ListGroup>
       </div>
     )
   }
