@@ -28,6 +28,16 @@ app.get('/service/location', (req, res) => {
   res.json(locations)
 })
 
+app.get('/service/requestParking', (req, res) => {
+  const spots = [
+    'parking lot 1',
+    'parking lot 2',
+    'parking lot 3'
+  ]
+
+  res.json(spots)
+})
+
 app.listen(4000, () => {
   console.log('running on port 4000')
 })
