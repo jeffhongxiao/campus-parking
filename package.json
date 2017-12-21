@@ -7,11 +7,12 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "react": "^16.1.1",
+    "react": "^15.0.0",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^16.1.1",
+    "react-dom": "^15.0.0",
+    "react-facebook-login-component": "^0.9.1",
     "react-router": "^3.2.0",
-    "react-scripts": "1.0.17",
+    "react-scripts": "^1.0.17",
     "react-select": "^1.1.0"
   },
   "scripts": {
